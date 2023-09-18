@@ -34,7 +34,8 @@ const isValidated = function(body) {
 
 router.get('/', async (req, res) => {
     const movies = await Movie.find({});
-    res.setHeader("Content-Type", "application/json");
+    // res.setHeader("Content-Type", "application/json");
+    // res.json(movies);
     res.json(movies);
 });
 
