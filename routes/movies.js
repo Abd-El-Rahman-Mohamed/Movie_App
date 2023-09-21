@@ -80,6 +80,23 @@ router.put('/:id', async (req, res) => {
     res.send(updatedMovie);
 });
 
+// To update an item with specific index //
+//////////////////////////////////////////
+router.put('/index/:index', async (req, res) => {
+    var index = req.params.index;
+    const movies = await Movie.find({});
+    var id = movies[index]._id;
+
+    const body = req.body;
+    
+    const updatedMovie = await Movie.findOneAndUpdate(
+        {  _id: id  },
+        {  ...body  },
+        { new: true }
+    );
+    res.send(updatedMovie);
+});
+
 router.delete("/:id", async (req, res) => {
     const id = req.params.id;
 
@@ -90,6 +107,15 @@ router.delete("/:id", async (req, res) => {
 
     const result = await Movie.findByIdAndDelete(id);
     res.send(result);
+});
+
+router.delete('/index/:index', async (req, res) => {
+    var index = req.params.index;
+    const movies = await Movie.find({});
+    var id = movies[index]._id;
+    
+    const deletedMovie = await Movie.findOneAndDelete( {  _id: id  } );
+    res.send(deletedMovie);
 });
 
 module.exports = router;

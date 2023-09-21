@@ -1,142 +1,151 @@
 body {
-    /* position: relative; */
-    /* overflow-x: hidden; */
     color: white;
-    /* background-color: black; */
     background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('./assets/background.png');
     background-size: 100vw;
     background-repeat: repeat;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+header, 
+header * {
+    margin: 0 auto; 
+    height: fit-content;
+}
 header {
-    max-width: 40vw;
-    margin: 0 auto;
+    max-width: 40vw;   
     margin-top: 20vh;
+    margin-bottom: 5vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
+#logo { max-width: 100%; }
+#slogan { max-width: 30%; }
 
-#logo {
-    height: 20%;
-    max-width: 100%;
-}
-
-#slogan {
-    max-width: 30%;
-    margin: 0 auto;
-}
-
-nav { margin-bottom: 24vh; }
+nav { margin-bottom: 33vh; }
 nav ul {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 5vh;
+    column-gap: 16vh;
     list-style-type: none;
-    padding: 0;
+    width: fit-content;
+    margin: 0 auto;
 }
-nav ul button { all: unset; }
 nav ul li {
     cursor: pointer;
-    height: 100%;
-    color: rgb(200, 200, 200);
     font-size: 20px;
-    position: relative;
-    overflow: hidden;
 }
-nav ul li.active {
-    font-weight: bold;
-    color: rgb(255, 255, 255);
+nav ul li:hover {
+    border-bottom: 4px solid white; 
+    color: white;    
 }
-nav ul li::before {
-    position: absolute;
-    display: block;
-    content: '';
-    bottom: 0;
-    left: -100%;
-    width: 100%;
-    height: 3%;
-    background-color: rgb(255, 255, 255);
+nav ul li:hover ,
+nav ul li.active { filter: drop-shadow(0 0 10px #ff0075); font-weight: bold; }
+nav ul li.active { 
+    filter: drop-shadow(0 0 10px #ff0075);
+    border-bottom: 4px solid #ff0075; 
+    color: #ff0075;
 }
-nav ul li:hover::before, nav ul li.active::before { left: 0%; }
-nav img { max-width: 90px; }
+/* 
+When we hover on the ul element, 
+then the active li will have no border
+and it will be in normal (not bold) font-weight 
+*/
+nav ul:hover li.active {
+    border-bottom: none; 
+    font-weight: normal;
+}
 nav figure {
-    /* margin-top: 10vh; */
     height: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
+nav img { max-width: 90px; }
+nav ul button { all: unset; }
 
-article section {
-    border: 2px solid #ff0075;
-    background-color: black;
+article { 
+    margin: 0vh auto; 
+    padding-block: 25px;
 }
-article, article section {
+article section:first-child {margin-top: 0vh;}
+article section {
+    background: linear-gradient(rgba(0, 0, 0, 0.97), rgba(0, 0, 0, 0.97));
+    filter: drop-shadow(0 0 4px #ff0075);
+    margin: 0 auto;
+    padding-bottom: 2vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 45vw;
-    margin: 10vh auto;
-    /* margin-top: 10vh;
-    margin-bottom: 20vh; */
-    font-size: 1rem;
-    max-height: fit-content;
+    width: 50vw;
+    margin-top: 15vh;
 }
 article section h2 {
+    position: relative;
     background-color: #ff0075;
     width: 100%;
-    line-height: 25px;
+    line-height: 50px;
+    height: 50px;
     color: black;
+    text-shadow: white 1px 1px 10px;
     font-weight: bold;
     text-align: center;
     margin-top: 0;
 }
-article section img { max-width: 10vw; }
-article section h3,
-article section p { 
-    color: rgba(255, 255, 255, 0.8);
-    width: 80%; 
-    margin: 2vh auto;
-    text-align: center
+/* ↓ In Edit or Delete Mode ('✍🏻' or '❌') ↓ */
+section h2 button {
+    height: 50px;
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 85px;
+    border: unset;
+    background-color: unset;
+    font-size: 1.15em;
+    animation: shakeme 0.5s infinite;
+}
+@keyframes shakeme {
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(10deg); }
+    50%  { transform: rotate(20deg); }
+    75%  { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+}
+article section img { max-width: 14vw; }
+article section div { 
+    width: 90%;
+    margin-block: 1vh;
 }
 
-article { width: 100% }
-
-#formAddMovieContainer { width: 50vw; }
-
-form { font-size: 1.5rem; }
-form div { 
-    width: 100%; 
-    height: 8vh;
-    line-height: 8vh;
+#formAddMovieContainer { width: 60vw; }
+form { 
+    max-width: 100%;
+    font-size: 1.5rem; 
+}
+section form div { 
     display: flex; 
-    justify-content: space-evenly; 
     align-items: center;
+    display: 90%;
+    margin: 0 auto;
+    margin-block: 5vh; 
+    justify-content: space-between;
 }
 form label {
     display: inline-block;
-    width: 300px;
+    width: 330px;
 }
-form input { 
+form input, form textarea { 
     background-color: rgba(255, 255, 255, 0.7); 
-    height: 4vh;
-    width: 15vw;
     font-size: 0.7em;
+    width: 18vw;
 }
-form input:focus { 
+form input:focus, form textarea:focus{ 
     border: 3px solid #ff0075; 
     outline: none; 
 }
-button[type=submit] {
-    margin: 5vh auto;
-    width: fit-content;
-    font-size: 1.2rem;
-    display: block;
-}
+
+/* Styling the part of selecting Genres */
 form div#genresDiv {
     display: flex;
     flex-direction: row;
@@ -145,35 +154,48 @@ form div#genresDiv {
 }
 #genresSelectContainer {
     display: flex;
-    margin: 0 auto;
     flex-wrap: wrap;
-    width: 163px;
-    height: fit-content;
+    width: 18vw;
+    justify-content: center;
+    margin: unset;
 }
-#genresSelectContainer select { margin-block: 1vh; }
+#genresSelectContainer select { 
+    width: 14.4vw;
+    margin-block: 1vh; 
+}
+#genresSelectContainer button { width: 2vw; }
 
-form div#castDiv {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: fit-content;
-}
+/* Styling the part of writing the movie Plot */
+form textarea { font-size: initial; }
+#plotTextarea { min-height: 50px; }
+
+/* Styling the part of entering the movie Casts */
 #castAddContainer {
     display: flex;
-    margin: 0 auto;
     flex-wrap: wrap;
-    width: 212.9px;
+    column-gap: 2px;
+    width: 18vw;
     height: fit-content;
+    justify-content: center;
+    margin: unset;
 }
 #castAddContainer input { 
     margin-block: 1vh; 
-    width: 175px;
+    width: 13vw;
     height: 30px;
 }
-
 #castAddContainer button {
     height: 37px;
+    width: 2.5vw;
 }
+
+button[type=submit] {
+    margin: 5vh auto;
+    width: fit-content;
+    font-size: 1.2rem;
+    display: block;
+}
+
 
 
 @media only screen and (max-width: 600px) {
@@ -189,8 +211,12 @@ form div#castDiv {
         margin-top: 0.5vh;
     }
 
-    nav {margin-bottom: 25.5vh}
-    nav ul { margin: 2vh auto; }
+    nav {margin-bottom: 45vh}
+    nav ul { 
+        column-gap: initial;
+        padding-left: 0;
+    }
+    nav ul li { max-width: 25vw; }
     nav ul button {
         width: max-content;
         font-size: 10px;
@@ -199,20 +225,93 @@ form div#castDiv {
     nav figure { height: 60px; }
     nav ul li::before { display: none; }
 
-    article, article section { font-size: 5px; }
+    article, article section, button[id^=sendEditedBtn] { font-size: 5px; }
+    article section h2 { 
+        height: 25px; 
+        line-height: 25px; 
+    }
 
-    form { font-size: 0.75rem; }
+    section:has(form) {
+        width: 100vw;
+    }
+    
+    form { 
+        font-size: 0.75rem; 
+        max-width: 90%;
+        height: fit-content;
+    }
     form div {
         margin: 0 auto;
         width: 80%;
+        height: fit-content
     }
-    form input {
-        width: 50%;
-        height: 3.3vh;
+    form input, form textarea {
+        min-width: 90px;
+        max-height: 10px;
     }
-    form button { font-size: 3vw; }
+    /* #genresSelectContainer {
+        display: flex;
+        flex-wrap: wrap;
+        width: 90px;
+        justify-content: center;
+    } */
+    #genresSelectContainer {
+        display: flex;
+        flex-wrap: wrap;
+        width: 422px;
+        justify-content: flex-end;
+        margin: unset;
+    }
+    #genresSelectContainer select { 
+        width: 75px;
+        margin-block: 1vh;
+        height: 20px;
+        font-size: 6px;
+    }
+    #genresSelectContainer button { 
+        width: 20px;
+        height: 20px;
+        font-size: 0.7em;
+    }
+    
+    #castAddContainer {
+        display: flex;
+        flex-wrap: wrap;
+        width: 422px;
+        justify-content: flex-end;
+        margin: unset;
+    }
+    form #castAddContainer input { 
+        min-width: 67px;
+        margin-block: 1vh;
+        height: 20px;
+        font-size: 6px;
+    }
+    #castAddContainer button { 
+        width: 20px;
+        height: 18px;
+        font-size: 0.7em;
+    }
+    
+    button[type=submit] {
+        margin: 5vh auto;
+        width: fit-content;
+        font-size: 0.6rem;
+        display: block;
+    }
+    button[id^=sendEditedBtn] { margin-top: 2vh; outline: none; }
+    section h2 button {
+        font-size: 10px;
+        top: 0;
+        right: 0;
+        height: 20px;
+        width: 50px;
+    }
+
+    #plotTextarea { font-size: 0.7em; }
 }
 
 /* styling by classes */
 .deepPink { color: #ff0075; }
-.smallText { font-size: smaller; }
+.smallText { font-size: small; }
+.blackTextShadow { text-shadow: 0 0 3px black; }
