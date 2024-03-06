@@ -215,7 +215,6 @@ button[type=submit] {
     nav ul { 
         column-gap: initial;
         padding-left: 0;
-        max-width: 98vw;
     }
     nav ul li { max-width: 25vw; }
     nav ul button {
@@ -250,12 +249,6 @@ button[type=submit] {
         min-width: 90px;
         max-height: 10px;
     }
-    /* #genresSelectContainer {
-        display: flex;
-        flex-wrap: wrap;
-        width: 90px;
-        justify-content: center;
-    } */
     #genresSelectContainer {
         display: flex;
         flex-wrap: wrap;
