@@ -215,6 +215,7 @@ button[type=submit] {
     nav ul { 
         column-gap: initial;
         padding-left: 0;
+        max-width: 98vw;
     }
     nav ul li { max-width: 25vw; }
     nav ul button {
